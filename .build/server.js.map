@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../server.ts"],
+  "sourcesContent": ["import express from 'express'\nimport { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'\nimport { ApolloServer } from 'apollo-server-express'\nimport { express as expressVoyager } from 'graphql-voyager/middleware'\nimport { typeDefs, resolvers } from './schema'\nimport { db } from './db'\n\nasync function run() {\n  const app = express()\n\n  const server = new ApolloServer({\n    typeDefs,\n    resolvers,\n    context: {\n      db,\n    },\n    plugins: [\n      ApolloServerPluginLandingPageGraphQLPlayground\n    ]\n  })\n\n  await server.start()\n\n  app.use('/voyager', expressVoyager({ endpointUrl: '/' }))\n\n  server.applyMiddleware({ app, path: '/' })\n\n  app.listen(3000, () => {\n    console.log('http server started')\n  })\n}\n\nrun()\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA,qBAAoB;AACpB,gCAA+D;AAC/D,mCAA6B;AAC7B,wBAA0C;AAC1C,oBAAoC;AACpC,gBAAmB;AAEnB,qBAAqB;AACnB,QAAM,MAAM;AAEZ,QAAM,SAAS,IAAI,0CAAa;AAAA,IAC9B;AAAA,IACA;AAAA,IACA,SAAS;AAAA,MACP;AAAA;AAAA,IAEF,SAAS;AAAA,MACP;AAAA;AAAA;AAIJ,QAAM,OAAO;AAEb,MAAI,IAAI,YAAY,+BAAe,EAAE,aAAa;AAElD,SAAO,gBAAgB,EAAE,KAAK,MAAM;AAEpC,MAAI,OAAO,KAAM,MAAM;AACrB,YAAQ,IAAI;AAAA;AAAA;AAIhB;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../db.ts"],
+  "sourcesContent": ["export type Db = {\n  drinkRecords: DrinkRecord[]\n}\n\nexport type DrinkRecord = {\n  id: string\n  drinks: bigint\n  name: string\n  createdAt: bigint\n}\n\n\n/**\n* Mock (in-memory) db implementation\n* Restart will clear the data \uD83D\uDE41\n* DO NOT use it in production \u2757\uFE0F\n*/\nexport const db: Db = {\n  drinkRecords: []\n}\n"],
+  "mappings": ";;;;;;;AAAA;AAAA;AAAA;AAiBO,MAAM,KAAS;AAAA,EACpB,cAAc;AAAA;",
+  "names": []
+}

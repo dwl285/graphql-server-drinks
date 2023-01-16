@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../graphql.context.ts"],
+  "sourcesContent": ["import { Db } from \"./db\";\n\nexport type GraphqlContext = {\n  db: Db\n}\n\nexport type Resolvers = {\n  [key: string]: {\n    [key: string]: Resolver<GraphqlContext>\n  }\n}\n\nexport type Resolver<TContext> =\n  | ((_: any, __: any, context: TContext, info: any) => any)\n  | { subscribe: any }\n  | { resolve: any }\n"],
+  "mappings": ";;AAAA;",
+  "names": []
+}
